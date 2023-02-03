@@ -52,11 +52,14 @@ class Direction:
     R_LEFT        = 0x07
     R_UP_LEFT     = 0x08
 
-class SwitchController:
-    STICK_MIN      = 0
-    STICK_CENTER   = 128
-    STICK_MAX      = 255
 
+class Stick:
+    MIN      = 0
+    CENTER   = 128
+    MAX      = 255
+
+
+class SwitchController:
 
     def __init__(self, devices):
         self._gamepad_device = find_device(devices, usage_page=0x1, usage=0x05)
@@ -65,10 +68,10 @@ class SwitchController:
 
         self._button = 0
         self._hat    = Hat.CENTER
-        self._lx     = self.STICK_CENTER
-        self._ly     = self.STICK_CENTER
-        self._rx     = self.STICK_CENTER
-        self._ry     = self.STICK_CENTER
+        self._lx     = Stick.CENTER
+        self._ly     = Stick.CENTER
+        self._rx     = Stick.CENTER
+        self._ry     = Stick.CENTER
         self._dummy  = 0
 
         self._button_pushing_sec = BUTTON_PUSHING_SEC
@@ -158,10 +161,10 @@ class SwitchController:
         """
         self._button = 0
         self._hat    = Hat.CENTER
-        self._lx     = self.STICK_CENTER
-        self._ly     = self.STICK_CENTER
-        self._rx     = self.STICK_CENTER
-        self._ry     = self.STICK_CENTER
+        self._lx     = Stick.CENTER
+        self._ly     = Stick.CENTER
+        self._rx     = Stick.CENTER
+        self._ry     = Stick.CENTER
         self._sendreport()
 
 
@@ -309,3 +312,7 @@ class SwitchController:
             self._dummy
         )
         self._gamepad_device.send_report(self._report)
+
+
+    def sendreport(self, report):
+        self._gamepad_device.send_report(report)
