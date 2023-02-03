@@ -44,7 +44,7 @@ CIRCUITPY
   |-- switchcontroller.py
 ~~~
 
-3. Raspberry Pi PicoをSwitchに接続
+4. Raspberry Pi PicoをSwitchに接続
 
 Aボタンを連打するサンプルなので、NPCの前などで確認してください
 
